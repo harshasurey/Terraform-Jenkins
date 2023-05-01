@@ -35,8 +35,7 @@ pipeline {
         
         stage('Apply') {
             steps {
-                sh 'pwd;cd terraform/ ; terraform apply'
-                sh 'pwd;cd terraform/ ; yes'
+                sh 'pwd;cd terraform/ ; terraform apply --auto-approve'
             }
         }
     }

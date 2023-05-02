@@ -72,7 +72,7 @@ resource "aws_instance" "Docker_webserver" {
    delete_on_termination = true
    
    tags = {
-    Name = "Sample Instance"
+    Name = "DOCKER SERVER"
   }
  }
 }

@@ -61,7 +61,7 @@ resource "aws_security_group_rule" "allow_all" {
 #Instance block
 
 resource "aws_instance" "Docker_webserver" {
- ami                         = "ami-081a3b9eded47f0f3"
+ ami                         = "ami-081a3b9eded47f0f3"   #ubuntu AMI
  instance_type               = "t2.micro"
  key_name                    = "Docker-ssh"
  vpc_security_group_ids      = [aws_security_group.web_server_sg_tf.id]

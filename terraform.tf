@@ -9,7 +9,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-west-1"
 }
 
 # Create a VPC
@@ -22,7 +22,7 @@ resource "aws_vpc" "myvpc" {
 resource "aws_subnet" "Publicsubnet" {
   vpc_id     = aws_vpc.myvpc.id
   cidr_block = "10.0.1.0/24"
-  availability_zone = "ap-south-1a"
+  availability_zone = "us-west-1a"
   
   tags = {
     Name = "Publicsubnet"
@@ -34,7 +34,7 @@ resource "aws_subnet" "Publicsubnet" {
 resource "aws_subnet" "Privatesubnet" {
   vpc_id     = aws_vpc.myvpc.id
   cidr_block = "10.0.2.0/24"
-  availability_zone = "ap-south-1b"
+  availability_zone = "us-west-1b"
   
   tags = {
     Name = "Privatesubnet"
@@ -173,9 +173,9 @@ resource "aws_security_group" "PrivateSG" {
 #Public Instance
 
 resource "aws_instance" "public_instance" {
-  ami                                             = "ami-06c2ec1ceac22e8d6"
+  ami                                             = "ami-010dd83fd3054c05f"
   instance_type                                   = "t3.micro"
-  availability_zone                               = "ap-south-1a"
+  availability_zone                               = "us-west-1a"
   associate_public_ip_address                     = "true"
   vpc_security_group_ids                          = [aws_security_group.PublicSG.id]
   subnet_id                                       = aws_subnet.Publicsubnet.id 
@@ -189,9 +189,9 @@ resource "aws_instance" "public_instance" {
 #Private Instance
 
 resource "aws_instance" "private_instance" {
-  ami                                             = "ami-06c2ec1ceac22e8d6"
+  ami                                             = "ami-010dd83fd3054c05f"
   instance_type                                   = "t3.micro"
-  availability_zone                               = "ap-south-1b"
+  availability_zone                               = "us-west-1b"
   associate_public_ip_address                     = "false"
   vpc_security_group_ids                          = [aws_security_group.PrivateSG.id]
   subnet_id                                       = aws_subnet.Privatesubnet.id 

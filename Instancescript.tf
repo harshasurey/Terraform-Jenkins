@@ -71,9 +71,8 @@ resource "aws_instance" "Docker_webserver" {
    volume_type           = "gp2"
    volume_size           = "8"
    delete_on_termination = true
-   
+ }
    tags = {
     Name = "DOCKER SERVER"
   }
- }
 }

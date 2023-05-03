@@ -66,6 +66,7 @@ resource "aws_instance" "Docker_webserver" {
  key_name                    = "Docker-ssh"
  vpc_security_group_ids      = [aws_security_group.web_server_sg_tf.id]
  associate_public_ip_address = true
+ user_data                   = file("script.sh")
  root_block_device {
    volume_type           = "gp2"
    volume_size           = "8"
